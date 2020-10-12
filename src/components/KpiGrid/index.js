@@ -38,7 +38,7 @@ const KpisGrid = (props) => {
     )
 
     return (
-        <Wrapper>
+        <Wrapper data-testid="kpi-grid">
             <KpiCard
                 isFetching={isFetching}
                 title="Active sourcing"

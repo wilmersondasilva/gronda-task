@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import KpiLoader from 'components/KpiLoader'
+import { lightenDarkenColor } from 'utils'
 
 const Wrapper = styled.div`
     position: relative;
@@ -56,7 +58,20 @@ const LastValue = styled.p`
 `
 
 const KpiCard = (props) => {
-    const { title, currentValue, lastValue, backgroundColor } = props
+    const {
+        isFetching,
+        title,
+        currentValue,
+        lastValue,
+        backgroundColor
+    } = props
+
+    if (isFetching)
+        return (
+            <Wrapper backgroundColor={backgroundColor}>
+                <KpiLoader color={lightenDarkenColor(backgroundColor, -70)} />
+            </Wrapper>
+        )
 
     return (
         <Wrapper backgroundColor={backgroundColor}>
@@ -68,6 +83,7 @@ const KpiCard = (props) => {
 }
 
 KpiCard.propTypes = {
+    isFetching: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     currentValue: PropTypes.number,

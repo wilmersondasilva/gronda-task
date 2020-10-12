@@ -30,7 +30,7 @@ const defaultData = {
 }
 
 const KpisGrid = (props) => {
-    const { data } = props
+    const { isFetching, data } = props
     const { active_source, weekly_active, nps } = Object.assign(
         {},
         defaultData,
@@ -40,18 +40,21 @@ const KpisGrid = (props) => {
     return (
         <Wrapper>
             <KpiCard
+                isFetching={isFetching}
                 title="Active sourcing"
                 currentValue={active_source.current_period}
                 lastValue={active_source.last_period}
                 backgroundColor="#ffa07a"
             />
             <KpiCard
+                isFetching={isFetching}
                 title="Weekly active"
                 currentValue={weekly_active.current_period}
                 lastValue={weekly_active.last_period}
                 backgroundColor="#87cefa"
             />
             <KpiCard
+                isFetching={isFetching}
                 title="NPS"
                 currentValue={nps.current_period}
                 lastValue={nps.last_period}

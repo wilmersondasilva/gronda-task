@@ -12,8 +12,8 @@ test('if KpiCard renders the correct title', () => {
             backgroundColor="#a4a3ff"
         />
     )
-    const linkElement = getByText(/Test purposes/i)
-    expect(linkElement).toBeInTheDocument()
+    const title = getByText(/Test purposes/i)
+    expect(title).toBeInTheDocument()
 })
 
 test('if KpiCard renders the correct currentValue', () => {
@@ -26,8 +26,8 @@ test('if KpiCard renders the correct currentValue', () => {
             backgroundColor="#a4a3ff"
         />
     )
-    const linkElement = getByText(/35/i)
-    expect(linkElement).toBeInTheDocument()
+    const currentValue = getByText(/35/i)
+    expect(currentValue).toBeInTheDocument()
 })
 
 test('if KpiCard renders the correct lastValue', () => {
@@ -40,6 +40,6 @@ test('if KpiCard renders the correct lastValue', () => {
             backgroundColor="#a4a3ff"
         />
     )
-    const linkElement = getByText(/30/i)
-    expect(linkElement).toBeInTheDocument()
+    const lastValue = getByText(/30/i)
+    expect(lastValue).toBeInTheDocument()
 })

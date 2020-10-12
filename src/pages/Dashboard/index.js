@@ -41,7 +41,7 @@ const Dashboard = () => {
     }, [filter])
 
     return (
-        <Wrapper>
+        <Wrapper data-testid="dashboard">
             <IntervalFilter value={filter} onChange={setFilter} />
             <KpiGrid isFetching={isFetching} data={data} />
         </Wrapper>

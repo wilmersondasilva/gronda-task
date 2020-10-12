@@ -23,8 +23,8 @@ test('if IntervalFilter renders the correct label', () => {
     const { getByText } = render(
         <IntervalFilter value={DEFAULT_INTERVAL_OPTION} onChange={() => {}} />
     )
-    const linkElement = getByText(/Filter by/i)
-    expect(linkElement).toBeInTheDocument()
+    const label = getByText(/Filter by/i)
+    expect(label).toBeInTheDocument()
 })
 
 test('if IntervalFilter fires the change event correctly', () => {

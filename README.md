@@ -49,4 +49,4 @@ I think this solution is simple, elegant and works really good
 
 ### Automated Tests
 
-To create the unit tests, I've chosen to use Jest + React Testing Library which I think it's a great match for React applications. I put a git hook to running the tests before each git push command.
+To create the unit tests, I've chosen to use Jest + React Testing Library which I think it's a great match for React applications. I put a git hook to running the tests before each git push command. Unfortunately, as I didn't want to extend longer than 5 hours working on this I created just basic unit tests

@@ -8,7 +8,7 @@ const getKPIs = async (filter) => {
     const response = await fakeApi.post(params)
 
     if (response.status === 'ok') return response
-    else throw new Error("was't possible")
+    else throw new Error('Failed to fetch data from the server')
 }
 
 export default {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import IntervalFilter from './index'
 
 const TIME_UNITS = {
@@ -32,6 +33,9 @@ test('if IntervalFilter fires the change event correctly', () => {
     const { getByTestId } = render(
         <IntervalFilter value={DEFAULT_INTERVAL_OPTION} onChange={onChange} />
     )
-    fireEvent.change(getByTestId('interval-select'))
-    expect(onChange).toBeCalled()
+    userEvent.selectOptions(getByTestId('interval-select'), [
+            '{"timeUnit":"WEEK","timeUnitCount":1}'
+    ])
+
+    expect(onChange).toBeCalledWith({ timeUnit: 'WEEK', timeUnitCount: 1 })
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import IntervalFilter from './index'
 
 const TIME_UNITS = {
@@ -25,4 +25,13 @@ test('if IntervalFilter renders the correct label', () => {
     )
     const linkElement = getByText(/Filter by/i)
     expect(linkElement).toBeInTheDocument()
+})
+
+test('if IntervalFilter fires the change event correctly', () => {
+    const onChange = jest.fn()
+    const { getByTestId } = render(
+        <IntervalFilter value={DEFAULT_INTERVAL_OPTION} onChange={onChange} />
+    )
+    fireEvent.change(getByTestId('interval-select'))
+    expect(onChange).toBeCalled()
 })

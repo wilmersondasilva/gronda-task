@@ -119,7 +119,11 @@ const IntervalFilter = (props) => {
     return (
         <Wrapper>
             <label>Filter by</label>
-            <Select value={internalValue} onChange={handleChange}>
+            <Select
+                data-testid="interval-select"
+                value={internalValue}
+                onChange={handleChange}
+            >
                 {intervalOptions.map((intervalOption) => (
                     <option
                         value={JSON.stringify(intervalOption.value)}

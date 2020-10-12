@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 const KpiLoader = (props) => {
     const { color } = props
 
-    return <Wrapper color={color} />
+    return <Wrapper data-testid="kpi-loader" color={color} />
 }
 
 KpiLoader.propTypes = {

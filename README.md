@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# About the project
 
-## Available Scripts
+## How to run it
 
-In the project directory, you can run:
+It's necessary to install the dependencies
 
-### `npm start`
+```javascript
+npm install
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+With all the dependencies installed, to see the project running in the browser:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```javascript
+npm start
+```
 
-### `npm test`
+This command will start running the project in [http://localhost:3000](http://localhost:3000)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Other commands
 
-### `npm run build`
+The project was created using Create React App, so all its commons commands are included here. Furthermore, I added these:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+npm run lint                # run eslint
+npm run format              # run prettier
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## About My Decisions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As I already described above, I used Create React App to create this project and I didn't use any other third library (like Lodash or Axios), except the libraries that are common in a React application, like Styled Components and PropTypes.
 
-### `npm run eject`
+I didn't use Redux because, in my opinion, it would be overengineering since the project is really simple. Instead, I used React Hooks to help me with state management and organize the code better.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### CSS
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For CSS, I used Styled Components. Also created two general files called `index.css` and `reset.css` based on [Meyer's reset](http://meyerweb.com/eric/tools/css/reset/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I'm too used to develop using the `mobile-first` approach and when I first started the project I was planning to create also the list of companies, so I build all the components as responsive components. Unfortunately, in the end, I hadn't enough time to work on a company list.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Server + DB
 
-## Learn More
+To fake the HTTP requests, I was planning to use the [json-server](https://github.com/typicode/json-server) utility to mock a server, but as I have to send some filters as params, I need to make a POST request, not a GET request. This wouldn't be possible with json-server. So, I decided to mock a server using plain JavaScript into the project.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For this, I created a file called `db.js` which is basically an object containing all the possible filters with fixed values. I created, also, a `fakeApi.js` that has a method `post`. This method `post` receives the filters as parameters and it's responsible to communicate with the `db.js`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+No one other file knows about the existence of the `db.js` and the rest of the application communicates only with the `fakeApi.js` and like it was an actual API. I even put a wait of 1 second before returns the response in order to simulate the fetching. So if we need to refactor the project to use a real API, it would be really straightforward.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I think this solution is simple, elegant and works really good

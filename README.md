@@ -39,10 +39,14 @@ I'm too used to develop using the `mobile-first` approach and when I first start
 
 ### Server + DB
 
-To fake the HTTP requests, I was planning to use the [json-server](https://github.com/typicode/json-server) utility to mock a server, but as I have to send some filters as params, I need to make a POST request, not a GET request. This wouldn't be possible with json-server. So, I decided to mock a server using plain JavaScript into the project.
+To fake the HTTP requests, I was planning to use the [json-server](https://github.com/typicode/json-server) utility to mock a server, but as I have to send some filters as params, I need to make a POST request, not a GET request. To accomplish this requirement with json-server would add too much complexity. So, I decided to mock a server using plain JavaScript into the project.
 
 For this, I created a file called `db.js` which is basically an object containing all the possible filters with fixed values. I created, also, a `fakeApi.js` that has a method `post`. This method `post` receives the filters as parameters and it's responsible to communicate with the `db.js`.
 
 No one other file knows about the existence of the `db.js` and the rest of the application communicates only with the `fakeApi.js` and like it was an actual API. I even put a wait of 1 second before returns the response in order to simulate the fetching. So if we need to refactor the project to use a real API, it would be really straightforward.
 
 I think this solution is simple, elegant and works really good
+
+### Automated Tests
+
+To create the unit tests, I've chosen to use Jest + React Testing Library which I think it's a great match for React applications. I put a git hook to running the tests before each git push command.

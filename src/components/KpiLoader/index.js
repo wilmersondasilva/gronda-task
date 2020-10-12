@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const spin = keyframes`
     from {
@@ -29,6 +30,10 @@ const KpiLoader = (props) => {
     const { color } = props
 
     return <Wrapper color={color} />
+}
+
+KpiLoader.propTypes = {
+    color: PropTypes.string.isRequired
 }
 
 export default KpiLoader

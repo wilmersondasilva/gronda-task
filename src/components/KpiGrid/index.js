@@ -65,7 +65,8 @@ const KpisGrid = (props) => {
 }
 
 KpisGrid.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    isFetching: PropTypes.bool
 }
 
 export default KpisGrid

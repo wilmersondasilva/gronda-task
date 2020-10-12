@@ -1,5 +1,6 @@
 import { DB } from './db'
 
+// method used to mock a post to an actual API
 const post = (params) => {
     return new Promise((resolve) => {
         console.log('Requesting... ', params)

@@ -66,9 +66,11 @@ const KpiCard = (props) => {
         backgroundColor
     } = props
 
+    // shows a loading spinner if the fetching is not finished yet
     if (isFetching)
         return (
             <Wrapper backgroundColor={backgroundColor}>
+                {/* the color of the loading spinner is 70% darker than the KpiCard backgroundColor */}
                 <KpiLoader color={lightenDarkenColor(backgroundColor, -70)} />
             </Wrapper>
         )

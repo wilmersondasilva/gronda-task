@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
     width: 90%;
@@ -101,6 +102,7 @@ const intervalOptions = [
     }
 ]
 
+// the internalValue is a stringfied version of the params while the externalValue is a plain JS object
 const IntervalFilter = (props) => {
     const { value, onChange } = props
     const [internalValue, setInternalValue] = useState(JSON.stringify(value))
@@ -129,6 +131,11 @@ const IntervalFilter = (props) => {
             </Select>
         </Wrapper>
     )
+}
+
+IntervalFilter.propTypes = {
+    value: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired
 }
 
 export { DEFAULT_INTERVAL_OPTION }

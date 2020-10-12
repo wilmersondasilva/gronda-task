@@ -18,10 +18,11 @@ const Wrapper = styled.div`
 `
 
 const Dashboard = () => {
-    const [filter, setFilter] = useState(DEFAULT_INTERVAL_OPTION)
-    const [isFetching, setIsFetching] = useState(true)
-    const [data, setData] = useState({})
+    const [filter, setFilter] = useState(DEFAULT_INTERVAL_OPTION) // the params that will be sent to the server
+    const [isFetching, setIsFetching] = useState(true) // just for controlling the loading spinner
+    const [data, setData] = useState({}) // the response the is received from the server
 
+    // using hook useEffect to trigger the fetch to server when the filter changes
     useEffect(() => {
         const fetchData = async () => {
             setIsFetching(true)
